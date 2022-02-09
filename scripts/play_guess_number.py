@@ -1,14 +1,14 @@
-import os
-from dotenv import load_dotenv
-from brownie import Wei, accounts, Guess_number
 
-load_dotenv()
+from brownie import Contract, config, accounts, network, Wei
+
 def main():
-    deploy_account = accounts.add(os.environ['PRIVATE_KEY_1'])
+    account = accounts.add(config["wallets"]["from_key"])
+    guess_number_contract = Contract('0x744359d5D5e43e4d7975da6394C30AACb963fb45')
+    # guess_number_contract = Guess_number[-1]
     deploy_details = {
-        'from' : deploy_account,
-        'value': Wei('1 ether')
+        'from' : account,
+        'value': Wei('0.1 ether')
     }
-    guess_number = Guess_number.play(6, deploy_details)
-    return guess_number
+    guess_number_tx = guess_number_contract.play(2, account.address, deploy_details)
+    return guess_number_tx
 

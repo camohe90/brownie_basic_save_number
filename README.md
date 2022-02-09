@@ -32,45 +32,62 @@ pipx install eth-brownie
 https://github.com/camohe90/brownie_basic
 ```
 
-3. [Instala ganache ganache-cli](https://www.npmjs.com/package/ganache-cli)
+3. Configura las variables de entorno
 
-```bash
-npm install -g ganache-cli
+Configura tus [variables de entorno](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html) `WEB3_INFURA_PROJECT_ID`, y `PRIVATE_KEY` . 
+
+Puedes obtener un `WEB3_INFURA_PROJECT_ID` creando una cuenta en [Infura](https://infura.io/). Creas un nuevo proyecto y seleccionas la red de pruebas rinkeby. 
+
+En cuanto a tu `PRIVATE_KEY` las puedes obtener de una wallet como [metamask](https://metamask.io/). 
+
+Tambien vas a necesitar ETH rinkeby de prueba. Puedes obtener ETH usando el siguiente [faucet de rinkeby en el siguiente enlace](https://faucets.chain.link/rinkeby). Si eres nuevo por favor, [mira este video.](https://www.youtube.com/watch?v=P7FX_1PePX0)
+
+Puedes agregar tus variables de entorno en el archivo `.env`:
+
+```
+export WEB3_INFURA_PROJECT_ID=<PROJECT_ID>
+export PRIVATE_KEY=<PRIVATE_KEY>
 ```
 
+Luego, debes estar seguro que tu archivo `brownie-config.yaml` tenga:
 
-5. Configura la red con la que vamos a trabajar
-
-
-En el archvio brownie-confir.yaml configuramos la red en con la cual vamos a trabajar en este caso seria la red ganache-cli, para ello seleccionamos development  
+```
+dotenv: .env
+```
 
 ## Interactuando con los contratos
 
-Antes de ejecutar los script es fundamental tener en una terminal ganacle-cli, para ellos usaremos el siguiente comando
+Ahora si estamos listos para ejecutar ejecutar el scrip deploy_guess_number
 
 ```bash
-ganache-cli
-```
-
-Si se ejecuta correctamente nos deberia salir una lista de las cuentas disponibles en esta ambiente local de ganache. A continuación en el archivo .env se debe agregar una de las llaves privadas listadas en la terminal donde se esta ejecutando ganache-cli.
-
-Ahora si estamos listos para ejecutar ejecutar el scrip deploy_guess
-
-```bash
-brownie run deploy_guess_number.py
+brownie run deploy_guess_number.py --network rinkeby
 ```
 
 Si al ejecutar este comando se despliega el contrato correctamente deberian recibir un mensaje como el siguiente
 
 ```bash
-BrownieBasicProject is the active project.
-Attached to local RPC client listening at '127.0.0.1:8545'...
-
 Running 'scripts/deploy_guess_number.py::main'...
-Transaction sent: 0xef4700ad72b3822187c6ee60c5a09c5a3c2b476e819281e5793b105f7ce643e7
-  Gas price: 0.0 gwei   Gas limit: 6721975   Nonce: 0
-  Guess_number.constructor confirmed   Block: 1   Gas used: 243586 (3.62%)
-  Guess_number deployed at: 0x9eD482F454E964021d2CB79D9Aeea38603466d9f
+Transaction sent: 0xba68cb3f66183b971a5cc861779b18a32af3bd1535860b7ad7777196185c16b0
+  Gas price: 2.32478609 gwei   Gas limit: 291404   Nonce: 433
+  Guess_number.constructor confirmed   Block: 10140847   Gas used: 264913 (90.91%)
+  Guess_number deployed at: 0x744359d5D5e43e4d7975da6394C30AACb963fb45
+```
+
+Ahora solo haría falta ejecutar el script play_guess_number en la linea 6 se debe colocar la dirección del contrato que se desplego anteriormente, por defecto brownie crea un objeto donde agrupa las direcciones de los contratos inteligentes desplegados, y normalmente uno trabaja con la última dirección de contrato.
+
+Pero muchas veces necesitamos trabajar o experimentar con varios contratos ya desplegados por lo cual dejar por defecto la dirección del ultimo desplegado no es recomendable por eso es mejor que en la linea 6 coloques directamente la dirección del contrato.
+
+En la linea 11 el primer parametro que se le pasa a la función play es el número que estoy adivinando.
+
+Para ello usamos el siguiente comando
+
+```bash
+brownie run play_guess_number.py --network rinkeby
+```
+Y por ultimo podemos utilzar el script balance_guess_number que nos permite consultar cuando dinero se llevaria la persona que adivine el número, el resultado lo entrega en Wei
+
+```bash
+brownie run balance_guess_number.py --network rinkeby
 ```
 
 

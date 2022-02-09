@@ -10,7 +10,7 @@ contract Guess_number{
     uint public balance;
 
     constructor (uint _secretNumber) payable{
-        require(msg.value == 10*10**18, 'contract needs to be fund with at leats 10 eth');
+        require(msg.value == 0.1 ether, 'contract needs to be fund with at leats 0.1 eth');
         secretNumber = _secretNumber;
         currState = State.OPEN;
         balance = balance + msg.value;
@@ -21,8 +21,8 @@ contract Guess_number{
     }
 
     function play(uint guesessNumber, address _player) external payable{
-        require(msg.value == 10**18, 'you must pay to play');
-        require(currState == State.OPEN);
+        require(msg.value == 0.1 ether, 'you must pay to play');
+        require(currState == State.OPEN,'there is not money in this contract');
         player = payable(_player);
         balance = balance + msg.value;
         if (guesessNumber == secretNumber){
