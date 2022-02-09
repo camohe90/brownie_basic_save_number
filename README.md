@@ -41,9 +41,24 @@ npm install -g ganache-cli
 
 5. Configura la red con la que vamos a trabajar
 
+
 En el archvio brownie-confir.yaml configuramos la red en con la cual vamos a trabajar en este caso seria la red ganache-cli, para ello seleccionamos development  
 
 ## Interactuando con los contratos
+
+Antes de ejecutar los script es fundamental tener en una terminal ganacle-cli, para ellos usaremos el siguiente comando
+
+```bash
+ganache-cli
+```
+
+Si se ejecuta correctamente nos deberia salir una lista de las cuentas disponibles en esta ambiente local de ganache. A continuación en el archivo .env se debe agregar una de las llaves privadas que tambien se encuentran en la terminal donde se esta ejecutando ganache-cli.
+
+Ahora si estamos listos para ejecutar ejecutar el scrip deploy_guess
+
+```bash
+brownie run deploy_guess_number.py
+```
 
 
 
