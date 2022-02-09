@@ -7,7 +7,7 @@ def main():
     deploy_account = accounts.add(os.environ['PRIVATE_KEY_1'])
     deploy_details = {
         'from' : deploy_account,
-        'value': Wei('10 ether')
+        'value': Wei('1 ether')
     }
     guess_number = Guess_number.play(6, deploy_details)
     return guess_number
