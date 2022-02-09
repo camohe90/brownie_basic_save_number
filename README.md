@@ -52,7 +52,7 @@ Antes de ejecutar los script es fundamental tener en una terminal ganacle-cli, p
 ganache-cli
 ```
 
-Si se ejecuta correctamente nos deberia salir una lista de las cuentas disponibles en esta ambiente local de ganache. A continuación en el archivo .env se debe agregar una de las llaves privadas que tambien se encuentran en la terminal donde se esta ejecutando ganache-cli.
+Si se ejecuta correctamente nos deberia salir una lista de las cuentas disponibles en esta ambiente local de ganache. A continuación en el archivo .env se debe agregar una de las llaves privadas listadas en la terminal donde se esta ejecutando ganache-cli.
 
 Ahora si estamos listos para ejecutar ejecutar el scrip deploy_guess
 
@@ -60,8 +60,18 @@ Ahora si estamos listos para ejecutar ejecutar el scrip deploy_guess
 brownie run deploy_guess_number.py
 ```
 
+Si al ejecutar este comando se despliega el contrato correctamente deberian recibir un mensaje como el siguiente
 
+```bash
+BrownieBasicProject is the active project.
+Attached to local RPC client listening at '127.0.0.1:8545'...
 
+Running 'scripts/deploy_guess_number.py::main'...
+Transaction sent: 0xef4700ad72b3822187c6ee60c5a09c5a3c2b476e819281e5793b105f7ce643e7
+  Gas price: 0.0 gwei   Gas limit: 6721975   Nonce: 0
+  Guess_number.constructor confirmed   Block: 1   Gas used: 243586 (3.62%)
+  Guess_number deployed at: 0x9eD482F454E964021d2CB79D9Aeea38603466d9f
+```
 
 
 ## Recursos
