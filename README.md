@@ -28,7 +28,7 @@ pipx install eth-brownie
 
 2. Clone este repo 
 ```
-
+https://github.com/camohe90/brownie_basic_save_number
 ```
 
 3. Configura las variables de entorno
@@ -62,7 +62,7 @@ Ahora si estamos listos para ejecutar ejecutar el scriprt deploy_basic_storage
 brownie run deploy_basic_storage.py --network rinkeby
 ```
 
-Si brownie run deploy_guess_number.py --network rinkebyal ejecutar este comando se despliega el contrato correctamente deberian recibir un mensaje como el siguiente
+Si se ejecuto de forma correcta el comando brownie run deploy_guess_number.py --network rinkebyal  deberian recibir un mensaje como el siguiente
 
 ```bash
 Running 'scripts\deploy_basic_storage.py::main'...
@@ -72,7 +72,7 @@ Transaction sent: 0x30ab8e9d53fbd154029f9a61d632e6bc7fe49924590b9614a25bb9d9ae92
   Basic_storage deployed at: 0x104ea61A2642d0667c607E76eC4faE7F8E5D016B
 ```
 
-Ahora solo haría falta ejecutar el script save_number en la linea 6 se debe colocar la dirección del contrato que se desplego anteriormente, por defecto brownie crea un objeto donde agrupa las direcciones de los contratos inteligentes desplegados, y normalmente uno trabaja con la última dirección de contrato.
+Ahora solo haría falta ejecutar el script save_number, en la linea 6 se debe colocar la dirección del contrato que se desplego anteriormente, por defecto brownie crea un objeto donde agrupa las direcciones de los contratos inteligentes desplegados, y normalmente uno trabaja con la última dirección de contrato.
 
 Pero muchas veces necesitamos trabajar o experimentar con varios contratos ya desplegados por lo cual dejar por defecto la dirección del ultimo desplegado no es recomendable por eso es mejor que en la linea 6 coloques directamente la dirección del contrato.
 
