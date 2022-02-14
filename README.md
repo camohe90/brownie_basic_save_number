@@ -1,4 +1,4 @@
-# Adivina el número
+# Guardar un número
 
 En este repositorio vamos a desplegar un contrato inteligente básico, al cual permite escribir/reescribir un numero en la variable number y leer el valor que quedo almacenado.
 
